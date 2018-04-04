@@ -1,0 +1,8 @@
+RewriteEngine On
+
+Options -Indexes
+
+RewriteRule ^rest.php(.*) rest.php$1 [L]
+RewriteRule (.+)\?(.*)$ rest.php?resource=$1&$2 [L,NS,QSA]
+RewriteRule (.*) rest.php?resource=$1 [L,NS,QSA]
+
