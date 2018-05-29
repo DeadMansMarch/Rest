@@ -40,7 +40,7 @@ class Rest{
 
     public static func webRequest(_ method:REQUEST_METHOD,_ url:String,_ querydata:[String:String],callback:@escaping (Data?,URLResponse?,Error?)->Void){
         
-        let task = URLSession.shared.dataTask(with: formRequest(method,url,querydata)) { data, response, error in
+        let task = URLSession(configuration:URLSessionConfiguration.default).dataTask(with: formRequest(method,url,querydata)) { data, response, error in
             DispatchQueue.main.async{
                 guard ((response as! HTTPURLResponse).statusCode == 200) else{
                     print("ERROR IN REQUEST : STATUS \(((response as! HTTPURLResponse).statusCode))");
